@@ -9,7 +9,7 @@ export enum TEMPLATE {
 type Data = {
   title: string;
   message: string;
-  action?: { name: string; url: string; colors?: { background: string; text: string } };
+  actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
   tenant: string;
   address: string;
   email: string;

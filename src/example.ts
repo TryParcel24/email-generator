@@ -5,7 +5,10 @@ import { generate } from "./index";
 const html = generate({
   title: "Registeration Completed",
   message: "Hello Ali, welcome to Albaron and thank you for registering with us. Make your first order now, buon a petitti",
-  action: { name: "Show Menu", url: "http://google.com" },
+  actions: [
+    { name: "Show Menu", url: "http://google.com" },
+    { name: "Checkout Menu", url: "http://google.com" },
+  ],
   tenant: "Albaron",
   address: "98106-0167 O'Conner Burg 149 Quinn Gardens",
   email: "Ebony.Rippin@gmail.com",

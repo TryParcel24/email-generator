@@ -64,11 +64,15 @@
       <div class="sm-px-24" style="padding-top: 32px; padding-bottom: 32px; padding-left: 48px; padding-right: 48px;">
         <h1 style="text-align: center; color: #4b5563;">{{title}}</h1>
         <p style="margin-top: 0.125rem; text-align: center; color: #6b7280;">{{message}}</p>
+        {{#if actions}}
         <div style="line-height: 100%; margin-top: 44px; text-align: center;">
-          <a href="{{action.url}}" class="hover-opacity-75" style="background-color: #374151; border-radius: 4px; display: inline-block; font-weight: 600; font-size: 16px; padding-top: 16px; padding-bottom: 16px; padding-left: 24px; padding-right: 24px; text-align: center; color: #ffffff; text-decoration: none;">
-            <span style="mso-text-raise: 16px">{{action.name}}</span>
+          {{#each actions}}
+          <a href="{{url}}" class="hover-opacity-75" style="background-color: #374151; border-radius: 4px; display: inline-block; font-weight: 600; font-size: 16px; margin: 0.25rem; padding-top: 16px; padding-bottom: 16px; padding-left: 24px; padding-right: 24px; text-align: center; color: #ffffff; text-decoration: none;">
+            <span style="mso-text-raise: 16px">{{name}}</span>
           </a>
+          {{/each }}
         </div>
+        {{/if }}
       </div>
     </div>
                       </td>
