@@ -29,15 +29,19 @@ function clean() {
 }
 
 function test() {
-  return run("npm run test").exec();
+  return run("npm run build:test").exec();
 }
 
 function dev() {
   return gWatch(
     ["./src/templates/**/*.html", "./src/layouts/**/*.html", "./src/index.ts"],
-    series(parallel(templatesDev, core), rename, test, clean)
+    parallel(series(templatesDev, rename, test, clean), core)
   );
 }
 
+function serve() {
+  return run("npm run serve:test").exec();
+}
+
 exports.default = series(parallel(templatesProd, core), rename, clean);
-exports.dev = dev;
+exports.dev = parallel(serve, dev);

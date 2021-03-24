@@ -14,7 +14,7 @@ module.exports = {
     templates: {
       source: "src/templates",
       destination: {
-        path: "build",
+        path: "src/handlebars",
       },
       assets: {
         source: "src/assets/images",

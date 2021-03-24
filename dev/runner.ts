@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { generate, TEMPLATE, BaseData, ReceiptData } from "./index";
+import { generate, TEMPLATE, BaseData, ReceiptData } from "../src/index";
 
 const base = () => {
   const data: BaseData = {
@@ -17,9 +17,12 @@ const base = () => {
     logo: "https://commarce-line.s3.me-south-1.amazonaws.com/media/60434c1dbaca28156517f9ae/website/logo",
     image: "https://nectarsapp.s3.me-south-1.amazonaws.com/media/emails/registration.png",
   };
-  const html = generate(data);
-
-  fs.writeFileSync(path.join(__dirname, "test", "base.html"), html, { flag: "w" });
+  let html = generate(data);
+  html += `
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>') 
+  </script>`;
+  fs.writeFileSync(path.join(__dirname, "public", "base.html"), html, { flag: "w" });
 };
 
 const receipt = () => {
@@ -78,9 +81,13 @@ const receipt = () => {
       },
     },
   };
-  const html = generate(data, TEMPLATE.RECEIPT);
+  let html = generate(data, TEMPLATE.RECEIPT);
+  html += `
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>') 
+  </script>`;
 
-  fs.writeFileSync(path.join(__dirname, "test", "receipt.html"), html, { flag: "w" });
+  fs.writeFileSync(path.join(__dirname, "public", "receipt.html"), html, { flag: "w" });
 };
 
 base();

@@ -8,5 +8,5 @@
     "moduleResolution": "node",
     "baseUrl": "."
   },
-  "exclude": ["src/example.ts"]
+  "exclude": ["dev/*"]
 }
