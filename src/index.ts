@@ -4,6 +4,7 @@ import path from "path";
 
 export enum TEMPLATE {
   BASE = "base.html",
+  RECEIPT = "receipt.html",
 }
 
 type BaseData = {
@@ -18,19 +19,35 @@ type BaseData = {
   image: string;
 };
 
-type RecepitData = {
-  title: string;
+type ReceiptData = {
+  username: string;
   message: string;
-  actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
+  items: {
+    name: string;
+    amount: string;
+  }[];
+  subtotal: string;
+  tax: string;
+  total: string;
+  order: {
+    id: string;
+    time: string;
+    delivery?: {
+      location: string;
+      amount: string;
+    }
+    payment_type: string;
+  };
+  //tenant info
   tenant: string;
   address: string;
-  email: string;
   phone: string;
-  logo: string;
-  image: string;
+  email: string;
+  logo: string; //url
+  //advert?: string; //image url --footer
 };
 
-export const generate = (data: BaseData | RecepitData, template?: TEMPLATE): string => {
+export const generate = (data: BaseData | ReceiptData, template?: TEMPLATE): string => {
   const file = fs.readFileSync(path.join(__dirname, "handlebars", template || TEMPLATE.BASE));
   const compile = handlebars.compile(file.toString());
 
