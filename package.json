@@ -9,6 +9,7 @@
   },
   "main": "src/index.js",
   "dependencies": {
+    "@maizzle/cli": "^1.4.0",
     "@maizzle/framework": "^3.0.0",
     "handlebars": "^4.7.7"
   },
