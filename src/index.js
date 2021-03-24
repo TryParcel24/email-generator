@@ -9,7 +9,8 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 var TEMPLATE;
 (function (TEMPLATE) {
-    TEMPLATE["BASE"] = "base.html";
+    TEMPLATE["BASE"] = "base.hbs";
+    TEMPLATE["RECEIPT"] = "receipt.hbs";
 })(TEMPLATE = exports.TEMPLATE || (exports.TEMPLATE = {}));
 const generate = (data, template) => {
     const file = fs_1.default.readFileSync(path_1.default.join(__dirname, "handlebars", template || TEMPLATE.BASE));

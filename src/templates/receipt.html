@@ -7,35 +7,35 @@ image: images/registration.png
   <block name="template">
     <div>
         <div>
-          <div class="p-16">
+          <div class="px-16 pt-16">
             <span>Dear </span><span class="font-bold">@{{username}}</span>,
-            <p>@{{message}}</p>
+            <p class="pt-0">@{{message}}</p>
           </div>
           <div class="p-16">
             <div>
               @{{#each items}}
               <div style="display: flex; justify-content: space-between">
-                <span>@{{name}}</span>
-                <span>@{{amount}}</span>
+                <span>@{{quantity}}x @{{name}}</span>
+                <span>@{{amount}} @{{../currency}}</span>
               </div>
               @{{/each }}
               <div style="display: flex; justify-content: space-between">
                 <span>Sub Total</span>
-                <span>@{{subtotal}}</span>
+                <span>@{{subtotal}} @{{currency}}</span>
               </div>
               <div style="display: flex; justify-content: space-between">
                 <span>Tax</span>
-                <span>@{{tax}}</span>
+                <span>@{{tax}} @{{currency}}</span>
               </div>
                @{{#if delivery}}
               <div style="display: flex; justify-content: space-between">
                 <span>Delivery</span>
-                <span>@{{delivery.amount}}</span>
+                <span>@{{delivery.amount}} @{{currency}}</span>
               </div>
                 @{{/if}}
               <div style="display: flex; justify-content: space-between">
                 <span>Total</span>
-                <span>@{{total}}</span>
+                <span>@{{total}} @{{currency}}</span>
               </div>
             </div>
           </div>

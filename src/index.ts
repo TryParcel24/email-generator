@@ -3,11 +3,11 @@ import fs from "fs";
 import path from "path";
 
 export enum TEMPLATE {
-  BASE = "base.html",
-  RECEIPT = "receipt.html",
+  BASE = "base.hbs",
+  RECEIPT = "receipt.hbs",
 }
 
-type BaseData = {
+export type BaseData = {
   title: string;
   message: string;
   actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
@@ -19,13 +19,15 @@ type BaseData = {
   image: string;
 };
 
-type ReceiptData = {
+export type ReceiptData = {
   username: string;
   message: string;
   items: {
     name: string;
     amount: string;
+    quantity: number;
   }[];
+  currency: string;
   subtotal: string;
   tax: string;
   total: string;
@@ -35,7 +37,7 @@ type ReceiptData = {
     delivery?: {
       location: string;
       amount: string;
-    }
+    };
     payment_type: string;
   };
   //tenant info

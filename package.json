@@ -2,11 +2,12 @@
   "name": "email-generator",
   "version": "1.2.0",
   "scripts": {
-    "dev": "maizzle serve",
     "test": "ts-node src/example.ts",
-    "build:templates": "maizzle build production",
+    "build:templates:prod": "maizzle build production",
+    "build:templates:dev": "maizzle build",
     "build:core": "tsc",
-    "build": "gulp"
+    "build": "gulp",
+    "dev": "gulp dev"
   },
   "main": "src/index.js",
   "dependencies": {

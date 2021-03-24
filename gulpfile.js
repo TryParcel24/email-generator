@@ -1,14 +1,17 @@
 const run = require("gulp-run");
 const gRename = require("gulp-rename");
 const gClean = require("gulp-clean");
-const { src, dest, series, parallel } = require("gulp");
+const { src, dest, series, parallel, watch: gWatch } = require("gulp");
 
 function core() {
   return run("npm run build:core").exec();
 }
 
-function templates() {
-  return run("npm run build:templates").exec();
+function templatesProd() {
+  return run("npm run build:templates:prod").exec();
+}
+function templatesDev() {
+  return run("npm run build:templates:dev").exec();
 }
 
 function rename() {
@@ -25,4 +28,16 @@ function clean() {
   return src("./src/handlebars/**/*.html").pipe(gClean());
 }
 
-exports.default = series(parallel(templates, core), rename, clean);
+function test() {
+  return run("npm run test").exec();
+}
+
+function dev() {
+  return gWatch(
+    ["./src/templates/**/*.html", "./src/layouts/**/*.html", "./src/index.ts"],
+    series(parallel(templatesDev, core), rename, test, clean)
+  );
+}
+
+exports.default = series(parallel(templatesProd, core), rename, clean);
+exports.dev = dev;
