@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
-    <!--[if mso]>
+    <outlook>
       <xml
         ><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml
       >
@@ -26,7 +26,7 @@
           mso-line-height-rule: exactly;
         }
       </style>
-    <![endif]-->
+    </outlook>
     <if condition="page.title">
       <title>{{{ page.title }}}</title>
     </if>
@@ -56,12 +56,7 @@
       <table class="w-full font-sans">
         <tr>
           <td align="center" class="bg-body">
-            <table class="w-full max-w-1024 px-4">
-              <tr>
-                <td class="p-28 text-center">
-                  <img src="{{'\{\{logo\}\}'}}" width="150" />
-                </td>
-              </tr>
+            <table class="w-600 sm:w-full">
               <tr>
                 <td align="center" class="sm:px-24">
                   <table class="w-full">
@@ -75,22 +70,6 @@
                     </tr>
                     <tr>
                       <td class="text-center text-gray-400 text-xs px-24">
-                        <p class="m-0 text-gray-500">{{"\{\{tenant\}\}"}}</p>
-                        <p class="m-0 mt-1">{{"\{\{address\}\}"}}</p>
-                        <div class="">
-                          <span class="">{{"\{\{phone\}\}"}}</span>
-                          <span class="">-</span>
-                          <span class="">{{"\{\{email\}\}"}}</span>
-                        </div>
-
-                        <!-- <p class="cursor-default">
-                          <a href="https://maizzle.com/docs/" class="text-blue-500 no-underline hover:underline">Instagram</a>
-                          &bull;
-                          <a href="https://github.com/maizzle" class="text-blue-500 no-underline hover:underline">Facebook</a>
-                          &bull;
-                          <a href="https://twitter.com/maizzlejs" class="text-blue-500 no-underline hover:underline">Twitter</a>
-                        </p> -->
-
                         <p class="leading-none mt-8">
                           Powerd by
                           <a href="https://nectars.app" target="_blank" class="text-blue-400 hover:text-blue-300">Nectars</a>

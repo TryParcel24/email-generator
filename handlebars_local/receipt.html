@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
     <!--[if mso]>
-      <xml
-        ><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml
-      >
+      <xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
       <style>
         td,
         th,
@@ -46,13 +44,13 @@ img {
   vertical-align: middle;
 }
 
-table.bordered, table.bordered > thead > tr > th, table.bordered > tbody > tr > td {
+table.bordered, table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.bordered > tbody > tr > td {
   border-color: #4b5563;
   border-style: solid;
   border-width: 1px;
 }
 
-table.bordered > thead > tr > th, table.bordered > tbody > tr > td {
+table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.bordered > tbody > tr > td {
   padding: 0.25rem;
 }
 
@@ -62366,7 +62364,7 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > td {
       <table class="w-full font-sans" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
           <td align="center" class="bg-body">
-            <table class="w-full max-w-1024 px-4" cellpadding="0" cellspacing="0" role="presentation">
+            <table class="w-600 sm:w-full" cellpadding="0" cellspacing="0" role="presentation">
               <tr>
                 <td class="p-28 text-center">
                   <img src="{{logo}}" width="150" alt="">
@@ -62378,74 +62376,61 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > td {
                     <tr>
                       <td class="bg-white text-gray-800 text-base text-left leading-24 rounded-2xl shadow-sm">
                         
+    <div>
         <div>
-            <div class="px-24 py-32">
-                <div style="display: flex; justify-content: space-between; height: 100px">
-                    <div>
-                        <img src="{{logo}}" height="50px" width="150px" alt="">
-                    </div>
-                    <div class="text-right">
-                        {{address.line_one}}
-                        <br>
-                        {{address.line_two}}
-                        <br>
-                        {{address.line_three}}
-                        <br>
-                        {{address.line_four}}
-                    </div>
-                </div>
-                <hr>
-                <div style="display: flex; justify-content: space-between" class="py-12">
-                    <h1 class="text-left text-gray-600">{{title}}</h1>
-                    <div>
-                        {{invoice.reciever.name}}
-                        <br>
-                        {{invoice.reciever.address}}
-                    </div>
-                </div>
-                <div>
-                    <table style="width: 100%" cellpadding="0" cellspacing="0" role="presentation">
-                        <tbody>
-                            <tr>
-                                <th>Invoice Date:</th>
-                                <th>Due Date:</th>
-                                <th>Customer:</th>
-                                <th>Reference:</th>
-                            </tr>
-                            <tr>
-                                <td>{{invoice.date}}</td>
-                                <td>{{invoice.due_date}}</td>
-                                <td>{{invoice.customer}}</td>
-                                <td>{{invoice.reference}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="py-16">
-                    <table class="table-fixed bordered" cellpadding="0" cellspacing="0" role="presentation">
-                        <thead>
-                            <tr>
-                                <th class="w-1/5">Description</th>
-                                <th class="w-1/5">Quantity</th>
-                                <th class="w-1/5">Unit price</th>
-                                <th class="w-1/5">Taxes</th>
-                                <th class="w-1/5">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Marketing T-shirt</td>
-                                <td>100</td>
-                                <td>2.500</td>
-                                <td></td>
-                                <td>250.000 BHD</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+          <div class="p-16">
+            <span>Dear </span><span class="font-bold">{{username}}</span>,
+            <p>{{message}}</p>
+          </div>
+          <div class="p-16">
+            {{#if items}}
+            <div>
+              {{#each items}}
+              <div style="display: flex; justify-content: space-between">
+                <span>{{name}}</span>
+                <span>{{amount}}</span>
+              </div>
+              {{/each }}
+              <div style="display: flex; justify-content: space-between">
+                <span>Sub Total</span>
+                <span>{{subtotal}}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between">
+                <span>Tax</span>
+                <span>{{tax}}</span>
+              </div>
+               {{#if delivery}}
+              <div style="display: flex; justify-content: space-between">
+                <span>Delivery</span>
+                <span>{{delivery}}</span>
+              </div>
+                {{/if}}
+              <div style="display: flex; justify-content: space-between">
+                <span>Total</span>
+                <span>{{total}}</span>
+              </div>
             </div>
+            {{/if }}
+          </div>
+          <div class="bg-body w-full h-1"></div>
+          <div class="text-center pb-5">
+            <p class="text-gray-500 text-sm">
+              <span>Order ID :</span><span>{{receipt.order.id}}</span><br>
+              <span>Order Time: </span><span>{{receipt.order.time}}</span><br>
+              {{#if receipt.delivery}}<span>Delivery Location: </span><span>{{receipt.delivery}}</span><br>{{/if}}
+              <span>Payment Type: </span><span>{{receipt.payment_type}}</span><br>
+            </p>
+          </div>
         </div>
+        <!-- {{#if advert}}
+        <div style="display: inline-block; width: 100%">
+          <img src="{{advert}}" class="rounded-t-2xl object-contain" height="50px" width="100%" alt="advert" />
+        </div>
+        {{/if}} -->
+      </div>
+
     
+  
                       </td>
                     </tr>
                     <tr>

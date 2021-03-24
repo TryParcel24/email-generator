@@ -6,7 +6,7 @@ export enum TEMPLATE {
   BASE = "base.html",
 }
 
-type Data = {
+type BaseData = {
   title: string;
   message: string;
   actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
@@ -18,7 +18,19 @@ type Data = {
   image: string;
 };
 
-export const generate = (data: Data, template?: TEMPLATE): string => {
+type RecepitData = {
+  title: string;
+  message: string;
+  actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
+  tenant: string;
+  address: string;
+  email: string;
+  phone: string;
+  logo: string;
+  image: string;
+};
+
+export const generate = (data: BaseData | RecepitData, template?: TEMPLATE): string => {
   const file = fs.readFileSync(path.join(__dirname, "handlebars", template || TEMPLATE.BASE));
   const compile = handlebars.compile(file.toString());
 

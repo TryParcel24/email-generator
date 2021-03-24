@@ -1,0 +1,63 @@
+---
+bodyClass: bg-body
+image: images/registration.png
+---
+
+<extends src="src/layouts/master.html">
+  <block name="template">
+    <div>
+        <div style="">
+          <div class="p-16">
+            <span>Dear </span><span class="font-bold">@{{username}}</span>,
+            <p>@{{message}}</p>
+          </div>
+          <div class="p-16">
+            @{{#if items}}
+            <div>
+              @{{#each items}}
+              <div style="display: flex; justify-content: space-between">
+                <span>@{{name}}</span>
+                <span>@{{amount}}</span>
+              </div>
+              @{{/each }}
+              <div style="display: flex; justify-content: space-between">
+                <span>Sub Total</span>
+                <span>@{{subtotal}}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between">
+                <span>Tax</span>
+                <span>@{{tax}}</span>
+              </div>
+               @{{#if delivery}}
+              <div style="display: flex; justify-content: space-between">
+                <span>Delivery</span>
+                <span>@{{delivery}}</span>
+              </div>
+                @{{/if}}
+              <div style="display: flex; justify-content: space-between">
+                <span>Total</span>
+                <span>@{{total}}</span>
+              </div>
+            </div>
+            @{{/if }}
+          </div>
+          <div class="bg-body w-full h-1"></div>
+          <div class="text-center pb-5">
+            <p class="text-gray-500 text-sm">
+              <span>Order ID :</span><span>@{{receipt.order.id}}</span><br />
+              <span>Order Time: </span><span>@{{receipt.order.time}}</span><br />
+              @{{#if receipt.delivery}}<span>Delivery Location: </span><span>@{{receipt.delivery}}</span><br />@{{/if}}
+              <span>Payment Type: </span><span>@{{receipt.payment_type}}</span><br />
+            </p>
+          </div>
+        </div>
+        <!-- @{{#if advert}}
+        <div style="display: inline-block; width: 100%">
+          <img src="@{{advert}}" class="rounded-t-2xl object-contain" height="50px" width="100%" alt="advert" />
+        </div>
+        @{{/if}} -->
+      </div>
+
+    </div>
+  </block>
+</extends>
