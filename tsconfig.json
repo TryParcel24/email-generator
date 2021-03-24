@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["node", "@types/hbs"],
+    "declaration": true,
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": "."
+  },
+  "exclude": ["src/example.ts"]
+}
