@@ -44,7 +44,7 @@ image: images/registration.png
             <p class="text-gray-500 text-sm">
               <span>Order ID :</span><span>@{{order.id}}</span><br />
               <span>Order Time: </span><span>@{{order.time}}</span><br />
-              @{{#if receipt.delivery}}<span>Delivery Location: </span><span>@{{delivery}}</span><br />@{{/if}}
+              @{{#if delivery}}<span>Delivery Location: </span><span>@{{delivery.location}}</span><br />@{{/if}}
               <span>Payment Type: </span><span>@{{order.payment_type}}</span><br />
             </p>
           </div>
