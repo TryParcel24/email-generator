@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "email-generator",
+  "version": "1.2.0",
   "scripts": {
     "build:templates": "maizzle build production",
     "build:core": "tsc",
