@@ -13,7 +13,10 @@ var TEMPLATE;
     TEMPLATE["RECEIPT"] = "receipt.hbs";
 })(TEMPLATE = exports.TEMPLATE || (exports.TEMPLATE = {}));
 const generate = (data, template) => {
-    const file = fs_1.default.readFileSync(path_1.default.join(__dirname, "handlebars", template || TEMPLATE.BASE));
+    handlebars_1.default.registerHelper("join", function (context, options) {
+        return context.map((i) => options.fn(i)).join(", ");
+    });
+    const file = fs_1.default.readFileSync(path_1.default.join(__dirname, "templates", template || TEMPLATE.BASE));
     const compile = handlebars_1.default.compile(file.toString());
     const html = compile(data);
     return html;

@@ -11,14 +11,19 @@
 
 module.exports = {
   build: {
+    browsersync: {
+      ui: false,
+    },
     templates: {
       source: "src/templates",
+      fileTypes: "html",
       destination: {
-        path: "src/handlebars",
+        path: "dist/templates",
+        extension: "hbs",
       },
       assets: {
         source: "src/assets/images",
-        destination: "images",
+        destination: "dist/images",
       },
     },
     tailwind: {

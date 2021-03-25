@@ -62353,7 +62353,7 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
             <table class="w-600 sm:w-full" cellpadding="0" cellspacing="0" role="presentation">
               <tr>
                 <td class="p-28 text-center">
-                  <img src="https://commarce-line.s3.me-south-1.amazonaws.com/media/60434c1dbaca28156517f9ae/website/logo" width="150" alt="">
+                  <img src="{{logo}}" width="150" alt="">
                 </td>
               </tr>
               <tr>
@@ -62365,56 +62365,45 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
     <table cellpadding="0" cellspacing="0" role="presentation">
       <tr>
         <td>
-          <img src="https://nectarsapp.s3.me-south-1.amazonaws.com/media/emails/registration.png" class="rounded-t-1xl object-contain" height="250px" width="100%" alt="">
+          <img src="{{image}}" class="rounded-t-1xl object-contain" height="250px" width="100%" alt="">
         </td>
       </tr>
       <tr>
         <td>
           <div class="px-16 pt-16">
-            <h1 class="text-center text-gray-600">Order Confirmed</h1>
-            <p class="px-44 pt-0">Hello Ali, welcome to Albaron and thank you for ordering from us. buon a petitti</p>
+            <h1 class="text-center text-gray-600">{{title}}</h1>
+            <p class="px-44 pt-0">{{message}}</p>
           </div>
        </td>
      </tr>
     </table>
 
       <div class="leading-44">&zwnj;</div>
+      {{#with order}}
         <table class="px-44 w-full text-gray-500" cellpadding="0" cellspacing="0" role="presentation">
+          {{#each items}}
             <tr>
               <td class="text-left border-0 border-b border-solid border-gray-200 pb-4 capitalize">
                 <div>
-                2x maharaja chicken biryani
+                {{quantity}}x {{item_name}}
                 </div>
+                {{#each choice_def}}
                   <div class="text-sm text-gray-400 ml-16">
-                      <span>your choice of size:</span> <span class="text-gray-500">2 persons, large</span>
+                      <span>{{choice_def_text}}</span> <span class="text-gray-500">{{#join choices}}{{choice_text}}{{/join}}</span>
                   </div>
-                  <div class="text-sm text-gray-400 ml-16">
-                      <span>your choice of size:</span> <span class="text-gray-500">2 persons, large</span>
-                  </div>
+                {{/each}}
               </td>
               <td class="text-right border-0 border-b border-solid border-gray-200 py-4 align-top">
-                10 BHD
+                {{total}} {{../../currency}}
               </td>
             </tr>
-            <tr>
-              <td class="text-left border-0 border-b border-solid border-gray-200 pb-4 capitalize">
-                <div>
-                2x maharaja chicken biryani
-                </div>
-                  <div class="text-sm text-gray-400 ml-16">
-                      <span>your choice of size:</span> <span class="text-gray-500">2 persons</span>
-                  </div>
-              </td>
-              <td class="text-right border-0 border-b border-solid border-gray-200 py-4 align-top">
-                10 BHD
-              </td>
-            </tr>
+          {{/each }}
           <tr>
             <td class="font-medium text-left border-0 border-b border-solid border-gray-200 pb-4">
               Sub Total
             </td>
             <td class="font-medium text-right border-0 border-b border-solid border-gray-200 py-4">
-              4.3 BHD
+              {{sub_total}} {{../currency}}
             </td>
           </tr>
           <tr>
@@ -62422,23 +62411,25 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
               Tax
             </td>
             <td class="font-medium text-right border-0 border-b border-solid border-gray-200 py-4">
-              0.215 BHD
+              {{total_tax}} {{../currency}}
             </td>
           </tr>
+          {{#if isDelivery}}
             <tr>
               <td class="font-medium text-left border-0 border-b border-solid border-gray-200 pb-4">
               Delivery
               </td>
               <td class="font-medium text-right border-0 border-b border-solid border-gray-200 py-4">
-                0.5 BHD
+                {{address.delivery_charge}} {{../currency}}
               </td>
             </tr>
+          {{/if}}
           <tr>
             <td class="font-medium text-left border-0">
               Total
             </td>
             <td class="font-medium text-right border-0">
-              4.515 BHD
+              {{order_total}} {{../currency}}
             </td>
           </tr>
         </table>  
@@ -62446,14 +62437,19 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
         <div class="bg-body w-full h-1"></div>
         <div class="text-center pb-5">
           <p class="text-gray-500 text-sm">
-            <span>Order ID:</span><span>100</span> /
-            <span>2021-03-24T08:53:28.633Z2</span><br>
-            <span>2415 Wisoky Locks</span><br>
-            <span>Payment Method: </span><span>Cash</span><br>
+            <span>Order ID:</span><span>{{order_id}}</span> /
+            <span>{{created_time}}</span><br>
+            {{#if isDelivery}}<span>{{address.line_one}}</span><br>{{/if}}
+            <span>Payment Method: </span><span>{{payment_method}}</span><br>
           </p>
         </div>
+      {{/with}}
     
-    <!--  -->
+    <!-- {{#if advert}}
+    <div style="display: inline-block; width: 100%">
+      <img src="{{advert}}" class="rounded-t-2xl object-contain" height="50px" width="100%" alt="advert" />
+    </div>
+    {{/if}} -->
     
   
                       </td>
@@ -62463,12 +62459,12 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
                     </tr>
                     <tr>
                       <td class="text-center text-gray-400 text-xs px-24">
-                        <p class="m-0 text-gray-500">Albaron</p>
-                        <p class="m-0 mt-1">98106-0167 O&#x27;Conner Burg 149 Quinn Gardens</p>
+                        <p class="m-0 text-gray-500">{{tenant}}</p>
+                        <p class="m-0 mt-1">{{address}}</p>
                         <div>
-                          <span>427-521-3577</span>
+                          <span>{{phone}}</span>
                           <span>-</span>
-                          <span>Ebony.Rippin@gmail.com</span>
+                          <span>{{email}}</span>
                         </div>
 
                         <!-- <p class="cursor-default">
@@ -62496,7 +62492,3 @@ table.bordered > thead > tr > th, table.bordered > tbody > tr > th, table.border
   </body>
 </html>
 
-
-  <script>
-    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>') 
-  </script>

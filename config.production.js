@@ -10,13 +10,6 @@
 */
 
 module.exports = {
-  build: {
-    templates: {
-      destination: {
-        path: "src/handlebars",
-      },
-    },
-  },
   inlineCSS: true,
   removeUnusedCSS: true,
 };

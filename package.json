@@ -8,9 +8,9 @@
     "build:templates:dev": "maizzle build",
     "build:core": "tsc",
     "build": "gulp",
-    "dev": "gulp dev"
+    "dev": "gulp development"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "handlebars": "^4.7.7"
   },

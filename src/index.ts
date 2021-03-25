@@ -20,37 +20,49 @@ export type BaseData = {
 };
 
 export type ReceiptData = {
-  username: string;
+  title: string;
   message: string;
-  items: {
-    name: string;
-    amount: string;
-    quantity: number;
-  }[];
-  currency: string;
-  subtotal: string;
-  tax: string;
-  total: string;
   order: {
-    id: string;
-    time: string;
-    delivery?: {
-      location: string;
-      amount: string;
+    order_id: string;
+    cust_name: string;
+    isDelivery: number;
+    items: {
+      item_name: string;
+      quantity: number;
+      total: number;
+      choice_def: {
+        choice_def_text: string;
+        choices: {
+          choice_text: string;
+        }[];
+      }[];
+    }[];
+    order_total: number;
+    total_tax: number;
+    sub_total: number;
+    created_time: string;
+    address: {
+      line_one: string;
+      delivery_charge: number;
     };
-    payment_type: string;
+    payment_method: string;
   };
+  currency: string;
   //tenant info
   tenant: string;
   address: string;
   phone: string;
   email: string;
   logo: string; //url
+  image: string;
   //advert?: string; //image url --footer
 };
 
 export const generate = (data: BaseData | ReceiptData, template?: TEMPLATE): string => {
-  const file = fs.readFileSync(path.join(__dirname, "handlebars", template || TEMPLATE.BASE));
+  handlebars.registerHelper("join", function (context, options) {
+    return context.map((i) => options.fn(i)).join(", ");
+  });
+  const file = fs.readFileSync(path.join(__dirname, "templates", template || TEMPLATE.BASE));
   const compile = handlebars.compile(file.toString());
 
   const html = compile(data);
