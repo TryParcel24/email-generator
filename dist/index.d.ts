@@ -18,7 +18,7 @@ export declare type BaseData = {
     email: string;
     phone: string;
     logo: string;
-    image: string;
+    image?: string;
 };
 export declare type ReceiptData = {
     title: string;

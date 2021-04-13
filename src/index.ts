@@ -16,7 +16,7 @@ export type BaseData = {
   email: string;
   phone: string;
   logo: string;
-  image: string;
+  image?: string;
 };
 
 export type ReceiptData = {

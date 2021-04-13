@@ -6,7 +6,9 @@ image: images/registration.png
 <extends src="src/layouts/master.html">
   <block name="template">
     <div>
+      @{{#if image}}
       <img src="@{{image}}" class="rounded-t-2xl object-contain" height="250px" width="100%" />
+      @{{/if }}
       <div class="px-48 py-32 sm:px-24">
         <h1 class="text-center text-gray-600">@{{title}}</h1>
         <p prevent-widows class="mt-0.5 text-center text-gray-500" style="text-align: center">@{{message}}</p>
