@@ -14,21 +14,14 @@ image: images/registration.png
         <p prevent-widows class="mt-0.5 text-center text-gray-500" style="text-align: center">@{{message}}</p>
         @{{#if actions}}
         <div class="leading-full text-center mt-44">
-          @{{#each actions}} @{{#if colors}}
-          <a
-            href="@{{url}}"
-            class="inline-block py-16 px-24 m-1 rounded text-base font-semibold text-center no-underline @{{colors.background}} @{{colors.text}} hover:opacity-75"
-          >
-            <span style="mso-text-raise: 16px">@{{name}}</span>
-          </a>
-          @{{else}}
+          @{{#each actions}}
           <a
             href="@{{url}}"
             class="inline-block py-16 px-24 m-1 rounded text-base font-semibold text-center no-underline text-white bg-gray-700 hover:opacity-75"
           >
             <span style="mso-text-raise: 16px">@{{name}}</span>
           </a>
-          @{{/if }} @{{/each }}
+          @{{/each }}
         </div>
         @{{/if }}
       </div>
