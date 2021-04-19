@@ -5,7 +5,7 @@ import { generate, TEMPLATE, BaseData, ReceiptData } from "../dist";
 const base = () => {
   const data: BaseData = {
     title: "Registeration Completed",
-    message: "Hello Ali, welcome to Albaron and thank you for registering with us. Make your first order now, buon a petitti",
+    message: "Hello Ali,<br>welcome to Albaron and thank you for registering with us. Make your first order now, buon a petitti",
     actions: [
       { name: "Show Menu", url: "http://google.com" },
       { name: "Checkout Menu", url: "http://google.com" },
@@ -28,7 +28,7 @@ const base = () => {
 const receipt = () => {
   const data: ReceiptData = {
     title: "Order Confirmed",
-    message: "Hello Ali, welcome to Albaron and thank you for ordering from us. buon a petitti",
+    message: "Hello Ali,<br>welcome to Albaron and thank you for ordering from us. buon a petitti",
     tenant: "Albaron",
     address: "98106-0167 O'Conner Burg 149 Quinn Gardens",
     email: "Ebony.Rippin@gmail.com",
