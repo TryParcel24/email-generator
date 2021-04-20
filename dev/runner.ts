@@ -96,6 +96,7 @@ const receipt = () => {
         },
       ],
     },
+    actions: [{ name: "Show Menu", url: "http://google.com" }],
   };
   let html = generate(data, TEMPLATE.RECEIPT);
   html += `

@@ -10,6 +10,9 @@
       <xml><o:officedocumentsettings><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml>
     <![endif]-->
       <style>
+.hover-opacity-75:hover {
+  opacity: 0.75 !important;
+}
 .hover-text-blue-300:hover {
   color: #93c5fd !important;
 }
@@ -120,7 +123,16 @@
             <span>Payment Method: </span><span>{{payment_method}}</span><br>
           </p>
         </div>
-      {{/with}} </td>
+      {{/with}}
+        {{#if actions}}
+        <div style="font-family: 'Segoe UI', sans-serif; mso-line-height-rule: exactly; line-height: 100%; margin-top: 44px; text-align: center;">
+          {{#each actions}}
+          <a href="{{url}}" class="hover-opacity-75" style="font-family: 'Segoe UI', sans-serif; mso-line-height-rule: exactly; background-color: #374151; border-radius: 4px; display: inline-block; font-weight: 600; font-size: 16px; margin: 0.25rem; padding-top: 16px; padding-bottom: 16px; padding-left: 24px; padding-right: 24px; text-align: center; color: #ffffff; text-decoration: none;">
+            <span style="mso-text-raise: 16px">{{name}}</span>
+          </a>
+          {{/each }}
+        </div>
+        {{/if }} </td>
                     </tr>
                     <tr>
                       <td style="font-family: 'Segoe UI', sans-serif; mso-line-height-rule: exactly; height: 28px;"></td>
