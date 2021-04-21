@@ -55,6 +55,7 @@ export type ReceiptData = {
   email: string;
   logo: string; //url
   image: string;
+  actions?: { name: string; url: string; colors?: { background: string; text: string } }[];
   //advert?: string; //image url --footer
 };
 

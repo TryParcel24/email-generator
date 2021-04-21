@@ -21,8 +21,19 @@ image: images/registration.png
      </tr>
     </table>
 
-      <div class="leading-44">&zwnj;</div>
+      <div class="leading-12">&zwnj;</div>
+        <div class="bg-body w-full h-1"></div>
+      <div class="leading-12">&zwnj;</div>
       @{{#with order}}
+        <div class="text-center pb-2">
+          <p class="text-gray-500 text-sm">
+            <span>Order ID:</span><span>@{{order_id}}</span> <br />
+            <span>@{{created_time}}</span><br />
+            @{{#if isDelivery}}<span>@{{address.line_one}}</span><br />@{{/if}}
+            <span>Payment Method: </span><span>@{{payment_method}}</span><br />
+          </p>
+        </div>
+        <div class="leading-24">&zwnj;</div>
         <table class="px-44 w-full text-gray-500">
           @{{#each items}}
             <tr class="">
@@ -76,20 +87,13 @@ image: images/registration.png
             </td>
           </tr>
         </table>  
-        <div class="leading-64">&zwnj;</div>
-        <div class="bg-body w-full h-1"></div>
-        <div class="text-center pb-5">
-          <p class="text-gray-500 text-sm">
-            <span>Order ID:</span><span>@{{order_id}}</span> /
-            <span>@{{created_time}}</span><br />
-            @{{#if isDelivery}}<span>@{{address.line_one}}</span><br />@{{/if}}
-            <span>Payment Method: </span><span>@{{payment_method}}</span><br />
-          </p>
-        </div>
       @{{/with}}
     </table>
+      <div class="leading-24">&zwnj;</div>
+        <div class="bg-body w-full h-1"></div>
         @{{#if actions}}
-        <div class="leading-full text-center mt-44">
+      <div class="leading-12">&zwnj;</div>
+        <div class="leading-full text-center my-6">
           @{{#each actions}}
           <a
             href="@{{url}}"
@@ -99,6 +103,7 @@ image: images/registration.png
           </a>
           @{{/each }}
         </div>
+      <div class="leading-12">&zwnj;</div>
         @{{/if }}
     <!-- @{{#if advert}}
     <div style="display: inline-block; width: 100%">

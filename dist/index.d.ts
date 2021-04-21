@@ -55,6 +55,14 @@ export declare type ReceiptData = {
     email: string;
     logo: string;
     image: string;
+    actions?: {
+        name: string;
+        url: string;
+        colors?: {
+            background: string;
+            text: string;
+        };
+    }[];
 };
 export declare const generate: (data: BaseData | ReceiptData, template?: TEMPLATE) => string;
 export default generate;
