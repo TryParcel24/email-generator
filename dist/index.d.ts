@@ -26,11 +26,13 @@ export declare type ReceiptData = {
     order: {
         order_id: string;
         cust_name: string;
+        customer_note: string;
         isDelivery: number;
         items: {
             item_name: string;
             quantity: number;
             total: number;
+            note?: string;
             choice_def: {
                 choice_def_text: string;
                 choices: {

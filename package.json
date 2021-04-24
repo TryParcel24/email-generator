@@ -1,6 +1,6 @@
 {
   "name": "email-generator",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "scripts": {
     "build:test": "ts-node dev/runner.ts",
     "serve:test": "ts-node dev/server.ts",
@@ -12,6 +12,7 @@
   },
   "main": "dist/index.js",
   "dependencies": {
+    "date-fns": "^2.21.1",
     "handlebars": "^4.7.7"
   },
   "devDependencies": {
