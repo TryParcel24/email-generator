@@ -1,7 +1,6 @@
 import handlebars from "handlebars"
 import fs from "fs"
 import path from "path"
-import { parseISO, format } from "date-fns"
 
 export enum TEMPLATE {
   BASE = "base.hbs",
@@ -65,11 +64,6 @@ export type ReceiptData = {
 export const generate = (data: BaseData | ReceiptData, template?: TEMPLATE): string => {
   handlebars.registerHelper("join", function (context, options) {
     return context.map((i) => options.fn(i)).join(", ")
-  })
-
-  handlebars.registerHelper("date", function (context, options) {
-    const date = context.fn(this)
-    return format(date, "PPPpp")
   })
 
   const file = fs.readFileSync(path.join(__dirname, "templates", template || TEMPLATE.BASE))

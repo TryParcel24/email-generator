@@ -43,7 +43,7 @@ export declare type ReceiptData = {
         order_total: number;
         total_tax: number;
         sub_total: number;
-        created_time: string;
+        created_time: Date;
         address: {
             line_one: string;
             delivery_charge: number;
