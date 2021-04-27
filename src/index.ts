@@ -42,7 +42,7 @@ export type ReceiptData = {
     order_total: number
     total_tax: number
     sub_total: number
-    created_time: Date
+    created_time: Date | string
     address: {
       line_one: string
       delivery_charge: number
