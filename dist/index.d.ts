@@ -1,6 +1,7 @@
 export declare enum TEMPLATE {
     BASE = "base.hbs",
-    RECEIPT = "receipt.hbs"
+    RECEIPT = "receipt.hbs",
+    INVOICE = "invoice.hbs"
 }
 export declare type BaseData = {
     title: string;
@@ -66,5 +67,48 @@ export declare type ReceiptData = {
         };
     }[];
 };
-export declare const generate: (data: BaseData | ReceiptData, template?: TEMPLATE) => string;
+export declare type InvoiceData = {
+    title: string;
+    text: string;
+    tenant: string;
+    phone: string;
+    email: string;
+    logo: string;
+    billing: {
+        id: string;
+        date: Date | string;
+        month: Date | string;
+        plan: {
+            name: string;
+            cost: number;
+            duration: string;
+        };
+        payment: {
+            from_credit: number;
+            from_card: number;
+            credit: number;
+        };
+        address: {
+            line_one: string;
+            line_two: string;
+        };
+        name: string;
+        comp_name: string;
+        phone: string;
+        email: string;
+        card: string;
+        currency: string;
+        tax_percent: string;
+        tax: number;
+    };
+    actions?: {
+        name: string;
+        url: string;
+        colors?: {
+            background: string;
+            text: string;
+        };
+    }[];
+};
+export declare const generate: (data: BaseData | ReceiptData | InvoiceData, template?: TEMPLATE) => string;
 export default generate;

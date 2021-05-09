@@ -5,6 +5,7 @@ import path from "path"
 export enum TEMPLATE {
   BASE = "base.hbs",
   RECEIPT = "receipt.hbs",
+  INVOICE = "invoice.hbs",
 }
 
 export type BaseData = {
@@ -60,8 +61,43 @@ export type ReceiptData = {
   actions?: { name: string; url: string; colors?: { background: string; text: string } }[]
   //advert?: string; //image url --footer
 }
-
-export const generate = (data: BaseData | ReceiptData, template?: TEMPLATE): string => {
+export type InvoiceData = {
+  title: string
+  text: string
+  tenant: string
+  phone: string
+  email: string
+  logo: string //url
+  billing: {
+    id: string
+    date: Date | string
+    month: Date | string
+    plan: {
+      name: string
+      cost: number
+      duration: string
+    }
+    payment: {
+      from_credit: number
+      from_card: number
+      credit: number
+    }
+    address: {
+      line_one: string
+      line_two: string
+    }
+    name: string
+    comp_name: string
+    phone: string
+    email: string
+    card: string
+    currency: string
+    tax_percent: string
+    tax: number
+  }
+  actions?: { name: string; url: string; colors?: { background: string; text: string } }[]
+}
+export const generate = (data: BaseData | ReceiptData | InvoiceData, template?: TEMPLATE): string => {
   handlebars.registerHelper("join", function (context, options) {
     return context.map((i) => options.fn(i)).join(", ")
   })

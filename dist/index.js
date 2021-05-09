@@ -11,6 +11,7 @@ var TEMPLATE;
 (function (TEMPLATE) {
     TEMPLATE["BASE"] = "base.hbs";
     TEMPLATE["RECEIPT"] = "receipt.hbs";
+    TEMPLATE["INVOICE"] = "invoice.hbs";
 })(TEMPLATE = exports.TEMPLATE || (exports.TEMPLATE = {}));
 const generate = (data, template) => {
     handlebars_1.default.registerHelper("join", function (context, options) {

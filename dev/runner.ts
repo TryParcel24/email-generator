@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import { generate, TEMPLATE, BaseData, ReceiptData } from "../dist"
+import { generate, TEMPLATE, BaseData, ReceiptData, InvoiceData } from "../dist"
 
 const base = () => {
   const data: BaseData = {
@@ -109,5 +109,41 @@ const receipt = () => {
   fs.writeFileSync(path.join(__dirname, "public", "receipt.html"), html, { flag: "w" })
 }
 
+const invoice = () => {
+  const data: InvoiceData = {
+    title: "Payment Successful",
+    text: "Hello Ali,<br>welcome to Albaron and thank you for ordering from us. buon a petitti",
+    tenant: "Nectars",
+    phone: "17000000",
+    email: "Nectars@wildsbee.com",
+    logo: "https://nectarsapp.s3.me-south-1.amazonaws.com/media/emails/nectars.png",
+    billing: {
+      id: "100",
+      date: "2021-03-24T08:53:28.633Z2",
+      month: "May 2021",
+      plan: { name: "Renewal: Premuiom plan - monthly", cost: 30, duration: "From 18/03/2021 To 18/04/2021" },
+      payment: { from_credit: 10, from_card: 20, credit: 0 },
+      address: { line_one: "Building 546 Road 3554", line_two: "Block 542 Manama Bahrain" },
+      name: "Ali Dhaif",
+      comp_name: "Albaron Resturant",
+      phone: "140005454",
+      email: "tenant@gmail.com",
+      card: "3534",
+      currency: "BHD",
+      tax_percent: "5%",
+      tax: 0,
+    },
+    actions: [{ name: "Pay Now", url: "http://google.com" }],
+  }
+  let html = generate(data, TEMPLATE.INVOICE)
+  html += `
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>') 
+  </script>`
+
+  fs.writeFileSync(path.join(__dirname, "public", "invoice.html"), html, { flag: "w" })
+}
+
 base()
 receipt()
+invoice()
