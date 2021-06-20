@@ -131,7 +131,7 @@ const invoice = () => {
       card: "3534",
       currency: "BHD",
       tax_percent: "5%",
-      tax: 0,
+      tax: 10,
     },
     actions: [{ name: "Pay Now", url: "http://google.com" }],
   }
