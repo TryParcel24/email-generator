@@ -9,7 +9,7 @@
     "build:core": "tsc",
     "build": "gulp",
     "dev": "gulp development",
-    "postversion": "git push && git push --tags && npm run build"
+    "postversion": "npm run build && git push && git push --tags"
   },
   "main": "dist/index.js",
   "dependencies": {
