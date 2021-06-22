@@ -8,7 +8,8 @@
     "build:templates:dev": "maizzle build",
     "build:core": "tsc",
     "build": "gulp",
-    "dev": "gulp development"
+    "dev": "gulp development",
+    "postversion": "git push && git push --tags && npm run build"
   },
   "main": "dist/index.js",
   "dependencies": {
