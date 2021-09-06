@@ -83,6 +83,11 @@ export declare type InvoiceData = {
             cost: number;
             duration: string;
         };
+        additionalCharges: {
+            name: string;
+            usage?: string;
+            cost: number;
+        }[];
         payment: {
             from_credit: number;
             from_card: number;
