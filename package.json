@@ -1,6 +1,6 @@
 {
   "name": "email-generator",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "scripts": {
     "build:test": "ts-node dev/runner.ts",
     "serve:test": "ts-node dev/server.ts",
