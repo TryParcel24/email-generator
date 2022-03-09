@@ -72,21 +72,6 @@ export type InvoiceData = {
     id: string
     date: Date | string
     month: Date | string
-    plan: {
-      name: string
-      cost: number
-      duration: string
-    }
-    additionalCharges: {
-      name: string
-      usage?: string
-      cost: number
-    }[]
-    payment: {
-      from_credit: number
-      from_card: number
-      credit: number
-    }
     address: {
       line_one: string
       line_two: string
@@ -97,8 +82,6 @@ export type InvoiceData = {
     email: string
     card: string
     currency: string
-    tax_percent: string
-    tax: number
   }
   actions?: { name: string; url: string; colors?: { background: string; text: string } }[]
 }
