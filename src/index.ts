@@ -68,6 +68,7 @@ export type InvoiceData = {
   phone: string
   email: string
   logo: string //url
+  logo_href: string //url
   actions?: { name: string; url: string; colors?: { background: string; text: string } }[]
 }
 export const generate = (data: BaseData | ReceiptData | InvoiceData, template?: TEMPLATE): string => {

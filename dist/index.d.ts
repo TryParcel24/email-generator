@@ -74,6 +74,7 @@ export declare type InvoiceData = {
     phone: string;
     email: string;
     logo: string;
+    logo_href: string;
     actions?: {
         name: string;
         url: string;

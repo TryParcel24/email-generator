@@ -117,6 +117,7 @@ const invoice = () => {
     phone: "17000000",
     email: "Nectars@wildsbee.com",
     logo: "https://nectarsapp.s3.me-south-1.amazonaws.com/media/emails/nectars.png",
+    logo_href: "https://nectars.app",
     actions: [{ name: "Pay Now", url: "http://google.com" }],
   }
   let html = generate(data, TEMPLATE.INVOICE)
