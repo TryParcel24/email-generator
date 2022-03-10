@@ -74,21 +74,6 @@ export declare type InvoiceData = {
     phone: string;
     email: string;
     logo: string;
-    billing: {
-        id: string;
-        date: Date | string;
-        month: Date | string;
-        address: {
-            line_one: string;
-            line_two: string;
-        };
-        name: string;
-        comp_name: string;
-        phone: string;
-        email: string;
-        card: string;
-        currency: string;
-    };
     actions?: {
         name: string;
         url: string;
